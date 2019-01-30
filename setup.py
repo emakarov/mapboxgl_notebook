@@ -30,8 +30,7 @@ setup(
     author='Evgeni Makarov',
     author_email='evgeni.makarov@gmail.com',
     classifiers=[
-        'Development Status :: Beta',
         'Programming Language :: Python :: 3',
-        'Topic :: Public Transit'
+        'Topic :: MapboxGL Jupyter Notebook'
     ],
 )
