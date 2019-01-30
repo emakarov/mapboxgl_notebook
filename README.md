@@ -69,7 +69,7 @@ mapbox_map = MapboxMap(
 )
 mapbox_map.show()
 ```
-!(https://user-images.githubusercontent.com/395963/52003949-e98bed00-2500-11e9-9fa5-ee0356667fcc.png)
+![map with points and hover](https://user-images.githubusercontent.com/395963/52003949-e98bed00-2500-11e9-9fa5-ee0356667fcc.png)
 ```
 
 # Same as above but with Click interaction instead of hover
@@ -83,7 +83,7 @@ mapbox_map = MapboxMap(
 )
 mapbox_map.show()
 ```
-!(https://user-images.githubusercontent.com/395963/52003955-ec86dd80-2500-11e9-96d7-938fb5e2eee7.png)
+![map with points and click](https://user-images.githubusercontent.com/395963/52003955-ec86dd80-2500-11e9-96d7-938fb5e2eee7.png)
 ```
 # Data-driven properties directly with mapbox gl expressions
 data_url = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson'
@@ -128,4 +128,4 @@ mapbox_map = MapboxMap(
 mapbox_map.show()
 
 ```
-!(https://user-images.githubusercontent.com/395963/52003958-ef81ce00-2500-11e9-80af-feb3eb526fdc.png)
+![map with polygons](https://user-images.githubusercontent.com/395963/52003958-ef81ce00-2500-11e9-80af-feb3eb526fdc.png)
