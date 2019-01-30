@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block scripts %}
+
+<script>
+mapboxgl.accessToken = "{{ access_token }}";
+var map = new mapboxgl.Map({
+    container: "{{ div_id }}", // container id
+    style: "{{ style }}", // stylesheet location
+    center: {{ center }}, // starting position [lng, lat]
+    zoom: {{ zoom }} // starting zoom
+});
+
+let sources = {{ sources }};
+let layers = {{ layers }};
+let interactions = {{ interactions }};
+let popup = new mapboxgl.Popup();
+
+map.on('load', function(){
+
+  for (let i=0; i < sources.length; i++) {
+    let source = sources[i];
+    map.addSource(
+        source.id, {
+        'type': source.type,
+        'data': source.data
+    });
+  }
+
+  for (let i=0; i < layers.length; i++) {
+      if (map.getLayer(layers[i]['id']) === undefined) {
+          map.addLayer(layers[i]);
+      }
+  }
+
+  var popup_content = function(feature, properties) {
+      var html = '';
+      var property_value;
+      if (properties === '*') {
+        for (let i in feature.properties) {
+          property_value = feature.properties[i];
+          html = html + '<div>' + i + ' : ' + property_value + '</div>';
+        }
+      } else {
+        for (let i in feature.properties) {
+          if ( properties.includes(i) ) {
+            property_value = feature.properties[i];
+            html = html + '<div>' + i + ' : ' + property_value + '</div>';
+          }
+        }
+      }
+      return html;
+  }
+
+  var addPopupInteraction = function(layer_id, properties, interaction_type) {
+    var map_event;
+    if (interaction_type === 'hover') {
+      map_event = 'mousemove';
+    }
+    else if (interaction_type === 'click') {
+      map_event = 'click';
+    }
+
+    map.on('mousemove', function(e) {
+      if (map.getLayer(layer_id) === undefined) {
+        return;
+      }
+      var features = map.queryRenderedFeatures(e.point, {
+          layers: [
+            layer_id
+          ]
+      });
+      map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
+    });
+
+    map.on(map_event, function(e) {
+        if (map.getLayer(layer_id) === undefined) {
+          return;
+        }
+        var features = map.queryRenderedFeatures(e.point, {
+            layers: [
+              layer_id
+            ]
+        });
+        if (!features.length) {
+            popup.remove();
+            return;
+        }
+        var coordinates = [e.lngLat.lng, e.lngLat.lat];
+        var description = popup_content(features[0], properties);
+        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+        }
+        popup.setLngLat(coordinates)
+            .setHTML(description)
+            .addTo(map);
+      });
+  }
+
+  for (let i=0; i < interactions.length; i++) {
+    let interaction = interactions[i];
+    if (['hover', 'click'].includes(interaction.interaction_type)){
+      layer_id = interaction.layer_id;
+      addPopupInteraction(
+        interaction.layer_id,
+        interaction.properties,
+        interaction.interaction_type
+      );
+    }
+  }
+
+});
+</script>
+
+{% endblock %}
