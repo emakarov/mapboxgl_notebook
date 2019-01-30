@@ -85,7 +85,7 @@ mapbox_map.show()
 ```
 ![map with points and click](https://user-images.githubusercontent.com/395963/52003955-ec86dd80-2500-11e9-96d7-938fb5e2eee7.png)
 ```
-# Data-driven properties directly with mapbox gl expressions
+# Data-driven properties directly with mapbox gl expressions (picture can be different - real world dataset!)
 data_url = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson'
 source = GeoJSONSource(data_url, source_id='earthquakes')
 paint = Paint(
@@ -99,6 +99,7 @@ paint = Paint(
 layer = PointCircleLayer(source, paint=paint)
 interaction = ClickInteraction(layer, properties=['place', 'mag', 'type'])
 mapbox_map = MapboxMap(
+    style='mapbox://styles/mapbox/dark-v9',  # lets use another style
     center=[0,0],
     zoom=1,
     access_token=access_token,
@@ -107,6 +108,9 @@ mapbox_map = MapboxMap(
     interactions=[interaction]
 )
 mapbox_map.show()
+```
+![map with data driven color](https://user-images.githubusercontent.com/395963/52004296-bd24a080-2501-11e9-8921-fa36b1c79af5.png)
+```
 
 # Polygon layer
 data_url = 'https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_110m_admin_1_states_provinces_shp.geojson'
