@@ -7,8 +7,7 @@ Initially I worked with ipython notebook library provided by mapbox, but it had 
 2. A lot of templates and complicated logic.
 3. Limited ability to use mapboxgl expressions (especially, new-style expressions).
 
-I have implemented pull request to that repository to support multi-layer, as well as some other,
-but due to lack of PR ownershipt this functionality was not supported in mapboxgl_jupyter at 31Jan2019
+I have implemented pull request to that repository to support multi-layer, as well as some other contributor created another PR, but due to lack of PR ownershipt this functionality was not supported in mapboxgl_jupyter at 31 Jan 2019
 
 So, this project was created with taking into account:
 1. Multi layer support from the very beginning.
