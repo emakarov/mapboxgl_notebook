@@ -68,6 +68,9 @@ mapbox_map = MapboxMap(
     interactions=[hover]
 )
 mapbox_map.show()
+```
+(https://user-images.githubusercontent.com/395963/52003949-e98bed00-2500-11e9-9fa5-ee0356667fcc.png)
+```
 
 # Same as above but with Click interaction instead of hover
 layer = PointCircleLayer(source)
@@ -79,7 +82,9 @@ mapbox_map = MapboxMap(
     interactions=[click]
 )
 mapbox_map.show()
-
+```
+(https://user-images.githubusercontent.com/395963/52003955-ec86dd80-2500-11e9-96d7-938fb5e2eee7.png)
+```
 # Data-driven properties directly with mapbox gl expressions
 data_url = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson'
 source = GeoJSONSource(data_url, source_id='earthquakes')
@@ -123,3 +128,4 @@ mapbox_map = MapboxMap(
 mapbox_map.show()
 
 ```
+(https://user-images.githubusercontent.com/395963/52003958-ef81ce00-2500-11e9-80af-feb3eb526fdc.png)
