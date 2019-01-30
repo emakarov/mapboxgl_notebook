@@ -31,6 +31,10 @@ setup(
     author_email='evgeni.makarov@gmail.com',
     classifiers=[
         'Programming Language :: Python :: 3',
-        'Topic :: MapboxGL Jupyter Notebook'
+        'Intended Audience :: Developers',
+        'Intended Audience :: Science/Research',
+        'License :: OSI Approved :: MIT License',
+        'Topic :: Multimedia :: Graphics :: Graphics Conversion',
+        'Topic :: Scientific/Engineering :: GIS',
     ],
 )
