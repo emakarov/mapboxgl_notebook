@@ -16,6 +16,13 @@ So, this project was created with taking into account:
 3. Support of mapboxgl expressions.
 4. High flexibility to create new types of layers.
 
+Installation:
+download code, install with pip from github or from pypi:
+
+```
+pip install mapboxgl_notebook
+```
+
 Examples:
 ```
 import os
