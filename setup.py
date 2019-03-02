@@ -7,7 +7,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='mapboxgl_notebook',
-    version='0.1',
+    version='0.2',
     packages=[
         'mapboxgl_notebook',
     ],
