@@ -1,9 +1,11 @@
 from jinja2 import Environment, PackageLoader, StrictUndefined
 
+
 env = Environment(
     loader=PackageLoader('mapboxgl_notebook', 'templates'),
     autoescape=False,
-    undefined=StrictUndefined
+    undefined=StrictUndefined,
+    extensions=['jinja2.ext.autoescape']
 )
 
 

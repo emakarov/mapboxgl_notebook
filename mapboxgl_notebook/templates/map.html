@@ -11,10 +11,12 @@ var map = new mapboxgl.Map({
     zoom: {{ zoom }} // starting zoom
 });
 
+{% autoescape true %}
 let sources = {{ sources }};
 let layers = {{ layers }};
 let interactions = {{ interactions }};
 let popup = new mapboxgl.Popup();
+{% endautoescape %}
 
 map.on('load', function(){
 
