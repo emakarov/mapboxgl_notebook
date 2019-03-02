@@ -9,7 +9,7 @@ with open('README.md') as f:
 
 setup(
     name='mapboxgl_notebook',
-    version='0.4',
+    version='0.5',
     packages=[
         'mapboxgl_notebook',
     ],
@@ -27,6 +27,7 @@ setup(
     license='BSD License',  # example license
     description='MapboxGL ipython renderer',
     long_description=long_description,
+    long_description_content_type="text/markdown",
     url='https://github.com/emakarov/mapboxgl_notebook',
     zip_safe=False,
     author='Evgeni Makarov',
