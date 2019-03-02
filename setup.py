@@ -24,8 +24,16 @@ setup(
     include_package_data=True,
     license='BSD License',  # example license
     description='MapboxGL ipython renderer',
-    long_description='',
-    url='',
+    long_description='''
+    MapboxGL for ipython notebook with multilayer support and flexibility.
+    1. Multi layer support from the very beginning.
+    2. Small amount of python, html and javascript code.
+    3. Support of mapboxgl expressions.
+    4. High flexibility to create new types of layers.
+
+    See more information on https://github.com/emakarov/mapboxgl_notebook
+    ''',
+    url='https://github.com/emakarov/mapboxgl_notebook',
     zip_safe=False,
     author='Evgeni Makarov',
     author_email='evgeni.makarov@gmail.com',
