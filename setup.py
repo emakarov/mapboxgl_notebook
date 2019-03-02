@@ -9,7 +9,7 @@ with open('README.md') as f:
 
 setup(
     name='mapboxgl_notebook',
-    version='0.3',
+    version='0.4',
     packages=[
         'mapboxgl_notebook',
     ],
