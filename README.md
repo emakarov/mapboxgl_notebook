@@ -2,14 +2,9 @@
 
 MapboxGL for ipython notebook with multilayer support and flexibility.
 
-Initially I worked with ipython notebook library provided by mapbox, but it had some disadvantages:
-1. Does not support multi-layer.
-2. A lot of templates and complicated logic.
-3. Limited ability to use mapboxgl expressions (especially, new-style expressions).
+If you were looking for multilayer mapboxgl ipython module, this repository is a right place.
 
-I have implemented pull request to that repository to support multi-layer, as well as some other contributor created another PR, but due to lack of PR ownershipt this functionality was not supported in mapboxgl_jupyter at 31 Jan 2019
-
-So, this project was created with taking into account:
+This project was created with taking into account:
 1. Multi layer support from the very beginning.
 2. Small amount of python, html and javascript code.
 3. Support of mapboxgl expressions.
@@ -96,7 +91,7 @@ data_url = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.g
 source = GeoJSONSource(data_url, source_id='earthquakes')
 paint = Paint(
     circle_color=[
-            'interpolate', ["linear"], 
+            'interpolate', ["linear"],
             ['get', 'mag'],
             1.3, '#0000ff',
             2, '#ff0000'
