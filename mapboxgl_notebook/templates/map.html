@@ -31,7 +31,11 @@ map.on('load', function(){
 
   for (let i=0; i < layers.length; i++) {
       if (map.getLayer(layers[i]['id']) === undefined) {
-          map.addLayer(layers[i]);
+          if (layers[i]['below_layer_id'] === null) {
+            map.addLayer(layers[i]);
+          } else {
+            map.addLayer(layers[i], layers[i]['below_layer_id']);
+          }
       }
   }
 

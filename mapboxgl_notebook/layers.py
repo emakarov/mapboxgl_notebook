@@ -10,7 +10,7 @@ class BaseLayer:
     #: Mapbox layer type
     mapbox_layer_type = ''
 
-    def __init__(self, source, layer_id=None, layer_filter=None, paint=None):
+    def __init__(self, source, layer_id=None, layer_filter=None, paint=None, below_layer_id=None):
         """Initialisation of BaseLayer.
 
         :param source: GeoJSON for this layer.
@@ -19,11 +19,14 @@ class BaseLayer:
         :type layer_id: str
         :param layer_filter: Layer filter expression for mapbox
         :type layer_filter: dict
+        :param below_layer_id: Layer should be below layer with ID below_layer_id
+        :type below_layer_id: str
         """
         self.source = source
         self._layer_id = layer_id
         self._filter = layer_filter
         self._paint = paint
+        self._below_layer_id = below_layer_id
 
     def default_layer_id(self):
         """Returns default layer ID."""
@@ -56,7 +59,8 @@ class BaseLayer:
             'source': self.source.source_id,
             'type': self.mapbox_layer_type,
             'paint': self.paint(),
-            'filter': self.filter()
+            'filter': self.filter(),
+            'below_layer_id': self._below_layer_id
         }
 
 

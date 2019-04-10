@@ -134,3 +134,65 @@ mapbox_map.show()
 
 ```
 ![map with polygons](https://user-images.githubusercontent.com/395963/52003958-ef81ce00-2500-11e9-80af-feb3eb526fdc.png)
+
+```
+# How to place one layer below another:
+import os
+from mapboxgl_notebook.map import MapboxMap
+from mapboxgl_notebook.sources import GeoJSONSource
+from mapboxgl_notebook.layers import PointCircleLayer, LineStringLineLayer, PolygonFillLayer
+from mapboxgl_notebook.properties import Paint
+from mapboxgl_notebook.interactions import ClickInteraction, HoverInteraction
+access_token = os.environ.get('MAPBOX_ACCESS_TOKEN')
+
+# Data from dictionary
+data = {
+    'type': 'FeatureCollection',
+    'features':  [
+        {
+            'type': 'Feature',
+            'geometry': {
+                'type': 'Point',
+                'coordinates': [103.8798, 1.3831]
+            },
+            'properties': {
+                'id': 1,
+                'text_for_layer_1': 'Hello point 1 layer 1',
+                'text_for_layer_2': 'Hello point 1 layer 2'
+            }
+        },
+        {
+            'type': 'Feature',
+            'geometry': {
+                'type': 'Point',
+                'coordinates': [103.8290, 1.3531]
+            },
+            'properties': {
+                'id': 2,
+                'text_for_layer_1': 'Hello point 2 layer 2',
+                'text_for_layer_2': 'Hello point 2 layer 2'
+            }
+        }
+    ]
+}
+# Definition of source
+source = GeoJSONSource(data, source_id='points')
+# Layer (geojson type Point, mapboxgl type Circle)
+layer = PointCircleLayer(source, layer_id='layer_points')
+layer2 = PointCircleLayer(
+    source,
+    paint=Paint(circle_radius=10, circle_color='#00ff00'),
+    below_layer_id='layer_points'
+)
+# Hover interaction (popup with property name)
+hover = HoverInteraction(layer, properties=['text_for_layer_1'])
+hover2 = HoverInteraction(layer2, properties=['text_for_layer_2'])
+# Map rendering
+mapbox_map = MapboxMap(
+    access_token=access_token,
+    sources=[source],  # can be list of sources
+    layers=[layer, layer2],  # can be list of layers
+    interactions=[hover, hover2]
+)
+mapbox_map.show()
+```
